@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Theme Colors - Light Mode */
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
+    --primary: 14 165 233;
+    --primary-foreground: 255 255 255;
+    --secondary: 241 245 249;
+    --secondary-foreground: 15 23 42;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    --accent: 241 245 249;
+    --accent-foreground: 15 23 42;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 14 165 233;
+    --hover: 241 245 249;
+
+    /* Module Colors - Light Mode */
+    --module-maitreOeuvre: 5 150 105;
+    --module-maitreOuvrage: 37 99 235;
+    --module-entreprise: 124 58 237;
+    --module-particuliers: 217 119 6;
+    --module-agents: 219 39 119;
+
+    /* Icon Colors - Light Mode */
+    --icon-dashboard: 14 165 233;
+    --icon-workspace: 99 102 241;
+    --icon-marketplace: 139 92 246;
+    --icon-accounting: 236 72 153;
+    --icon-settings: 16 185 129;
+
+    /* Scrollbar Colors - Light Mode */
+    --scrollbar-thumb: rgb(203 213 225);
+    --scrollbar-track: transparent;
+    --scrollbar-thumb-hover: rgb(148 163 184);
+  }
+
+  :root[class~="dark"] {
+    /* Theme Colors - Dark Mode */
+    --background: 11 11 12;
+    --foreground: 229 231 235;
+    --card: 24 24 27;
+    --card-foreground: 229 231 235;
+    --popover: 24 24 27;
+    --popover-foreground: 229 231 235;
+    --primary: 14 165 233;
+    --primary-foreground: 229 231 235;
+    --secondary: 39 39 42;
+    --secondary-foreground: 229 231 235;
+    --muted: 39 39 42;
+    --muted-foreground: 161 161 170;
+    --accent: 39 39 42;
+    --accent-foreground: 229 231 235;
+    --destructive: 239 68 68;
+    --destructive-foreground: 229 231 235;
+    --border: 39 39 42;
+    --input: 39 39 42;
+    --ring: 14 165 233;
+    --hover: 39 39 42;
+
+    /* Module Colors - Dark Mode */
+    --module-maitreOeuvre: 16 185 129;
+    --module-maitreOuvrage: 59 130 246;
+    --module-entreprise: 139 92 246;
+    --module-particuliers: 245 158 11;
+    --module-agents: 236 72 153;
+
+    /* Icon Colors - Dark Mode */
+    --icon-dashboard: 14 165 233;
+    --icon-workspace: 99 102 241;
+    --icon-marketplace: 139 92 246;
+    --icon-accounting: 236 72 153;
+    --icon-settings: 16 185 129;
+
+    /* Scrollbar Colors - Dark Mode */
+    --scrollbar-thumb: rgb(55 65 81);
+    --scrollbar-track: transparent;
+    --scrollbar-thumb-hover: rgb(75 85 99);
+  }
+
+  /* Base styles */
+  html {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply antialiased bg-[rgb(var(--background))] text-[rgb(var(--foreground))];
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+
+  /* Firefox scrollbar styles */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  /* Selection styles */
+  ::-moz-selection {
+    @apply bg-cyan-500/20 text-cyan-800 dark:text-cyan-200;
+  }
+
+  ::selection {
+    @apply bg-cyan-500/20 text-cyan-800 dark:text-cyan-200;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply relative bg-[rgb(var(--card))] backdrop-blur-xl border border-[rgb(var(--border))] rounded-xl
+           shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_0_0_1px_rgba(255,255,255,0.1)]
+           hover:shadow-[0_8px_48px_rgba(0,0,0,0.2),inset_0_0_0_1px_rgba(255,255,255,0.15)]
+           transition-all duration-300;
+  }
+
+  .sidebar-gradient {
+    @apply bg-[rgb(var(--background))]/95 backdrop-blur-xl border-r border-[rgb(var(--border))];
+  }
+
+  .sidebar-item {
+    @apply relative flex items-center px-3 py-2 text-xs rounded-lg transition-all duration-200;
+  }
+
+  .sidebar-item-active {
+    @apply bg-[rgb(var(--hover))] text-[rgb(var(--foreground))];
+  }
+
+  .sidebar-item-inactive {
+    @apply text-[rgb(var(--muted-foreground))] hover:bg-[rgb(var(--hover))] hover:text-[rgb(var(--foreground))];
+  }
+
+  .text-default {
+    @apply text-[rgb(var(--foreground))];
+  }
+
+  .text-muted {
+    @apply text-[rgb(var(--muted-foreground))];
+  }
+
+  .text-primary {
+    @apply text-[rgb(var(--primary))];
+  }
+}
+
+/* Animations */
+@keyframes globe {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-globe {
+  animation: globe 20s linear infinite;
+}
+
+@keyframes reflection {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes backgroundShift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes auroraShift {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-2%, 2%) scale(1.02); }
+  50% { transform: translate(2%, -2%) scale(0.98); }
+  75% { transform: translate(-1%, -1%) scale(1.01); }
+  100% { transform: translate(0, 0) scale(1); }
+}
